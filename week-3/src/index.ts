@@ -20,9 +20,6 @@ const initilizeKeyPair = async()=>{
 }
 
 
-
-
-
 async function main() {
     let connection = new Web3.Connection(Web3.clusterApiUrl("devnet"), "confirmed");
     const signer = await initilizeKeyPair();
