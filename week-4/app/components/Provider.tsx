@@ -9,7 +9,9 @@ require('@solana/wallet-adapter-react-ui/styles.css');
 
 
 
-export default function Provider({children}: any){
+export default function Provider({children}: Readonly<{
+    children: React.ReactNode;
+  }>){
 
     // useMemo() is a hook that loads stuff only if one of the dependencies changes. 
     // In our case, the value of clusterApiUrl will only change if the network that the user 
@@ -17,8 +19,6 @@ export default function Provider({children}: any){
     const network = WalletAdapterNetwork.Devnet;
     const endpoint = useMemo(() => clusterApiUrl(network), [network]);
     const wallets = useMemo(()=>[new UnsafeBurnerWalletAdapter()], []);
-
-
 
     return (
     <ConnectionProvider endpoint={endpoint}>
